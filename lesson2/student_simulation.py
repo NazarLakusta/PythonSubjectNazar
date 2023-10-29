@@ -1,3 +1,4 @@
+from random import *
 class Student:
 
     def __init__(self,name):
@@ -42,7 +43,32 @@ class Student:
             self.alive = False
 
 
+    def live(self,day):
 
+        print()
+        print("=="*20)
+        print("Day number is: ",day)
+
+        live_random = randint(1,3)
+
+        if live_random == 1:
+            self.to_study()
+
+        elif live_random == 2:
+            self.to_chill()
+
+        elif live_random == 3:
+            self.to_sleep()
+
+        self.end_of_day()
+        self.is_alive()
+
+
+    # реалізувати в цій функції  вивід на екран номер дня
+    # стоврити рандомайзер , який на рандом буде вибирати подію, яку буде
+    # робити людина
+    # вкінці дня викликати інформацію про його поточні дані
+    # зробити перевірку чи живий чи ні
 
 
 
