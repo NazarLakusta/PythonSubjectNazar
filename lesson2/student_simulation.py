@@ -9,7 +9,7 @@ class Student:
 
     def to_study(self):
         print("Time to study")
-        self.gladness -= 5
+        self.gladness -= 10
         self.progress += 0.12
 
     def to_sleep(self):
@@ -18,8 +18,13 @@ class Student:
 
     def to_chill(self):
         print("REEEEESSSSSSSSTTTTTTTT!!!!!!!")
-        self.gladness += 5
+        self.gladness += 3
         self.progress -= 0.1
+
+    def punishment(self):
+        print("INCORECT INPUT (ANGRY)")
+        self.progress -= 0.2
+        self.gladness -=5
 
     def end_of_day(self):
         print("==== Congratulate , day is done ==== \n")
@@ -43,33 +48,47 @@ class Student:
             self.alive = False
 
 
+
     def live(self,day):
 
         print()
         print("=="*20)
         print("Day number is: ",day)
 
-        live_random = randint(1,3)
+        live_choice = input("What will you do today?? "
+                            "\n1) Study"
+                            "\n2) Chill"
+                            "\n3) Sleep"
+                            "\nChoice: ")
 
-        if live_random == 1:
+
+
+        if live_choice == "1" or live_choice == "Study" or live_choice == "study":
             self.to_study()
 
-        elif live_random == 2:
+        elif live_choice == "2" or live_choice == "Chill" or live_choice == "chill":
             self.to_chill()
 
-        elif live_random == 3:
+        elif live_choice == "3" or live_choice == "Sleep" or live_choice == "sleep":
             self.to_sleep()
+
+        else:
+            self.punishment()
 
         self.end_of_day()
         self.is_alive()
 
 
-    # реалізувати в цій функції  вивід на екран номер дня
-    # стоврити рандомайзер , який на рандом буде вибирати подію, яку буде
-    # робити людина
-    # вкінці дня викликати інформацію про його поточні дані
-    # зробити перевірку чи живий чи ні
 
 
 
 student_Nazar = Student("Nazar")
+
+
+for day in range(7):
+    if student_Nazar.alive == False:
+        break
+
+    student_Nazar.live(day)
+
+print("GAME OVER!!!")
