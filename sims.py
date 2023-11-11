@@ -27,11 +27,11 @@ class Human:
 
 
     def eat(self):
-       if self.home.food <=0:
+       if self.home.food <= 0:
            self.shopping("food")
 
        else:
-            if self.satiety >100:
+            if self.satiety > 100:
                 self.satiety = 100
                 return
 
@@ -138,13 +138,73 @@ class Human:
             print("Depression...")
             return False
 
-        if self.satiety:
+        if self.satiety<0:
             print("Dead..")
             return False
 
+    def live(self,day):
+        if self.is_alive() == False:
+            return False
 
+        if self.home is None:
+            print("Settled in the house")
+            self.get_home()
 
+        if self.car is None:
+            self.get_car()
+            print(f"I bought a car {self.car.brand}")
 
+        if self.job is None:
+            self.get_job()
+            print(f" I don't have a job, goint to get a job {self.job.job}"
+                  f" with salary {self.job.salary}")
+
+        self.days_indexes(day)
+
+        dice = randint(1,4)
+
+        if self.satiety < 20:
+            print("I'll go eat")
+            self.eat()
+
+        elif self.gladness < 20:
+            if self.home.mess>15:
+                print("I want to chill, but there is so much mess")
+                self.clean_home()
+            else:
+                print("Let's CHill!!")
+                self.chill()
+
+        elif self.money < 0:
+            print("Start working!")
+            self.work()
+
+        elif self.car.strength < 15:
+            print("I need to repati my car")
+            self.to_repair()
+
+        elif dice == 1:
+            print("Let's CHill!!")
+            self.chill()
+
+        elif dice == 2:
+            print("Start working!")
+            self.work()
+
+        elif dice == 3:
+            print("Cleaning time!")
+            self.clean_home()
+
+        elif dice == 4:
+            print("Time for treats!")
+            self.shopping(message="delicacies")
+
+brands_of_car = {
+ "BMW":{"fuel":100, "strength":100, "consumption":6},
+ "Lada":{"fuel":50, "strength":40, "consumption":10},
+ "Ferrari":{"fuel":80, "strength":120, "consumption":14},
+
+}
 class Auto:
 
     def __init__(self, brand_list):
@@ -163,19 +223,18 @@ class Auto:
             return False
 
 
-brands_of_car = {
- "BMW":{"fuel":100, "strength":100, "consumption":6},
- "Lada":{"fuel":50, "strength":40, "consumption":10},
- "Ferrari":{"fuel":80, "strength":120, "consumption":14},
 
-}
 class House:
     def __init__(self):
         self.mess = 0
         self.food = 0
 
 
-
+job_list = {
+    "Java developer":{"salary":50, "gladness_less":10},
+    "Python developer":{"salary":40, "gladness_less":3},
+    "Photoshop designer":{"salary":45,"gladness_less":25}
+}
 class Job:
 
     def __init__(self,job_list):
@@ -185,8 +244,11 @@ class Job:
 
 
 
-job_list = {
-    "Java developer":{"salary":50, "gladness_less":10},
-    "Python developer":{"salary":40, "gladness_less":3},
-    "Photoshop designer":{"salary":45,"gladness_less":25}
-}
+
+
+
+nazar = Human("Nazar")
+
+for day in range(1,8):
+    if nazar.live(day) == False:
+        break
