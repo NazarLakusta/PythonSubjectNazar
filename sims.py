@@ -25,6 +25,15 @@ class Auto:
         self.consumption = brand_list[self.brand]["consumption"]
         self.fuel = brand_list[self.brand]["fuel"]
 
+    def drive(self):
+        if self.strength>0 and  self.fuel > self.consumption:
+            self.fuel -= self.consumption
+            self.strength -= 1
+            return True
+        else:
+            print("The car cannot move")
+            return False
+
 
 brands_of_car = {
  "BMW":{"fuel":100, "strength":100, "consumption":6},
@@ -37,6 +46,8 @@ class House:
         self.mess = 0
         self.food = 0
 
+
+
 class Job:
 
     def __init__(self,job_list):
@@ -45,3 +56,9 @@ class Job:
         self.gladness = 0
 
 
+
+job_list = {
+    "Java developer":{"salary":50, "gladness_less":10},
+    "Python developer":{"salary":40, "gladness_less":3},
+    "Photoshop designer":{"salary":45,"gladness_less":25}
+}
