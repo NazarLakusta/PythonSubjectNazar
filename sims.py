@@ -13,7 +13,45 @@ class Human:
         self.home = House
 
     def get_car(self):
-        self.car = Auto()
+        self.car = Auto(brands_of_car)
+
+    def get_job(self):
+        if self.car.drive():
+            pass
+
+        else:
+            self.to_repair()
+            return
+
+        self.job = Job(job_list)
+
+
+    def eat(self):
+       if self.home.food <=0:
+           self.shopping("food")
+
+       else:
+
+    def work(self):
+        pass
+
+    def shopping(self,message):
+        pass
+
+    def chill(self):
+        pass
+
+    def clean_home(self):
+        pass
+
+    def to_repair(self):
+        pass
+
+    def days_indexes(self,day):
+        pass
+
+    def is_alive(self):
+        pass
 
 
 
@@ -51,9 +89,9 @@ class House:
 class Job:
 
     def __init__(self,job_list):
-        self.job = 0
-        self.salary = 0
-        self.gladness = 0
+        self.job = choice(list(job_list))
+        self.salary = job_list[self.job]["salary"]
+        self.gladness = job_list[self.job]["gladness_less"]
 
 
 
