@@ -10,7 +10,7 @@ class Human:
         self.money = 100
 
     def get_home(self):
-        self.home = House
+        self.home = House()
 
     def get_car(self):
         self.car = Auto(brands_of_car)
@@ -52,7 +52,7 @@ class Human:
                 return
 
         self.money += self.job.salary
-        self.gladness -= self.job.gladness_less
+        self.gladness -= self.job.gladness
         self.satiety -= 4
 
 
