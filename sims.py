@@ -31,27 +31,117 @@ class Human:
            self.shopping("food")
 
        else:
+            if self.satiety >100:
+                self.satiety = 100
+                return
+
+            self.satiety +=5
+            self.home.food -= 5
+
 
     def work(self):
-        pass
+        if self.car.drive():
+            pass
+
+        else:
+            if self.car.fuel < 20:
+                self.shopping("fuel")
+                return
+            else:
+                self.to_repair()
+                return
+
+        self.money += self.job.salary
+        self.gladness -= self.job.gladness_less
+        self.satiety -= 4
+
 
     def shopping(self,message):
-        pass
+        if self.car.drive():
+            pass
+
+        else:
+            if self.car.fuel < 20:
+                message = "fuel"
+                return
+            else:
+                self.to_repair()
+                return
+
+        if message == "fuel":
+            print("I bought fuel")
+            self.money -=100
+            self.car.fuel += 100
+
+        elif message == "food":
+            print("I bought food")
+            self.money-=50
+            self.home.food += 50
+
+        elif message == "delicacies":
+            print("Hooraaay!! Delicious!")
+            self.gladness += 10
+            self.satiety +=2
+            self.money-=15
+
+
+        # ви купили delicacies    ,  збільшити радість, ситість, зменшити гроші
 
     def chill(self):
-        pass
+        self.gladness+=10
+        self.home.mess+=5
 
     def clean_home(self):
-        pass
+        self.gladness -= 5
+        self.home.mess = 0
 
     def to_repair(self):
-        pass
+        self.car.strength += 100
+        self.money -= 50
 
     def days_indexes(self,day):
-        pass
+        print(f"day: {day}")
+
+        print()
+
+        print("==="*20)
+        print(f"Human: {self.name}")
+        print(f"Money: {self.money}")
+        print(f"Satiety: {self.satiety}")
+        print(f"Gladness: {self.gladness}")
+        print("===" * 20)
+
+        print()
+
+        print("///" * 20)
+        print("Info about house:")
+        print(f"Food: {self.home.food}")
+        print(f"Mess: {self.home.mess}")
+        print("///" * 20)
+
+        print()
+
+        print("***"*20)
+        print("Info about Car")
+        print(f"Brand: {self.car.brand}")
+        print(f"Fuel: {self.car.fuel}")
+        print(f"Strength: {self.car.strength}")
+
+
 
     def is_alive(self):
-        pass
+        if self.money < -500 :
+            print("Bankrupt..")
+            return False
+
+        if self.gladness<0:
+            print("Depression...")
+            return False
+
+        if self.satiety:
+            print("Dead..")
+            return False
+
 
 
 
