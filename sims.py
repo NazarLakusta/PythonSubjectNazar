@@ -7,6 +7,11 @@ class Human:
         self.gladness = 50
         self.satiety = 50
         self.money = 100
+
+
+
+
+
 class Auto:
 
     def __init__(self):
@@ -19,3 +24,10 @@ class House:
     def __init__(self):
         self.mess = 0
         self.food = 0
+
+class Job:
+
+    def __init__(self,job_list):
+        self.job = 0
+        self.salary = 0
+        self.gladness = 0
