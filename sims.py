@@ -100,9 +100,9 @@ class Human:
         self.money -= 50
 
     def days_indexes(self,day):
-        print(f"day: {day}")
-
         print()
+        print("NEEEWWWW DDAAAAYYYYYY")
+        print(f"day: {day}")
 
         print("==="*20)
         print(f"Human: {self.name}")
