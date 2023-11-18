@@ -12,6 +12,19 @@ class Human:
               "\ndate_of_birth",self.date_of_birth,
               "\nphoneNumber",self.phoneNumber)
 
+    def calculate_age(self):
+        day_now = datetime.date.today()
+
+        age = day_now.year - self.date_of_birth.year
+
+        if (day_now.month < self.date_of_birth or
+        (day_now.month == self.date_of_birth.month and day_now.day < self.date_of_birth.day)):
+
+            age -= 1
+
+
+        return age
+
 
 class Student(Human):
 
@@ -19,6 +32,7 @@ class Student(Human):
       super().__init__(first_name,last_name,date_of_birth,phoneNumber)
       self.progress = progress
       self.course = course
+
 
 
 
@@ -35,7 +49,7 @@ studentAnna = Student("Anna","Polyanska",datetime.date(2009,11,20),
                       "+3806666666",12,4)
 
 
-studentAnna.printInfo()z
+studentAnna.printInfo()
 
 
 
