@@ -17,7 +17,7 @@ class Human:
 
         age = day_now.year - self.date_of_birth.year
 
-        if (day_now.month < self.date_of_birth or
+        if (day_now.month < self.date_of_birth.month or
         (day_now.month == self.date_of_birth.month and day_now.day < self.date_of_birth.day)):
 
             age -= 1
@@ -53,4 +53,4 @@ studentAnna.printInfo()
 
 
 
-
+print(studentAnna.calculate_age())
