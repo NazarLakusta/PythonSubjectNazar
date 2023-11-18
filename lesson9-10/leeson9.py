@@ -34,8 +34,11 @@ class Student(Human):
       self.course = course
 
 
-
-
+    def point5scale(self):
+        score = 0
+        if self.progress>=1 and self.progress<=3:
+            score=1
+            print("Your score in 5 point scale: ",score)
 
 
 class Teacher(Human):
@@ -45,12 +48,22 @@ class Teacher(Human):
         self.sallary = sallary
 
 
-studentAnna = Student("Anna","Polyanska",datetime.date(2009,11,20),
-                      "+3806666666",12,4)
+    def sallaryInDollar(self):
 
+        print("Sallary in dollar $",self.sallary/38)
+
+studentAnna = Student("Anna","Polyanska",datetime.date(2009,11,20),
+                      "+3806666666",2,4)
+
+studentAnna.point5scale()
 
 studentAnna.printInfo()
 
-
-
 print(studentAnna.calculate_age())
+
+
+teacherNazar = Teacher("Nazar","Lakusta",datetime.date(2003,10,17),
+                       "+38077567676","Python OOP",38000)
+
+
+teacherNazar.sallaryInDollar()
