@@ -80,9 +80,29 @@ class Student:
 
 
 
+class Teacher:
 
+
+
+class Groups:
+    def __init__(self,teacher,students):
+        self.teacher = teacher
+        self.students = students
+
+teacher_Mariy_Ivanivna = Teacher("Mariya","Ivanivna")
 
 student_Nazar = Student("Nazar")
+student_Anna = Student("Anna")
+student_Maks = Student("Maks")
+
+students = []
+
+students.append(student_Nazar)
+students.append(student_Anna)
+students.append(student_Maks)
+
+
+group1 = Groups("1",teacher_Mariy_Ivanivna,students)
 
 
 for day in range(7):
